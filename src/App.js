@@ -12,7 +12,7 @@ const HEADER = ['id', 'login'];
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
   useEffect(() => {
     getUsers(setUsers);
   }, []);
