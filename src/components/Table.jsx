@@ -3,16 +3,16 @@ import React from 'react';
 const Header = ({attributes}) =>
   attributes.map(attribute => <th>{attribute}</th>);
 
-const Body = ({items, attributes}) =>
+const Body = ({items, attributes, currentItem, setCurrentItem}) =>
   items.map(item => (
-    <tr>
+    <tr class={item.id === currentItem.id && "is-selected"}>
       {attributes.map(attribute => (
-        <td>{item[attribute]}</td>
+			<td onClick={() => setCurrentItem(item)}>{item[attribute]}</td>
       ))}
     </tr>
   ));
 
-const Table = ({items, attributes}) => (
+const Table = ({items, attributes, currentItem, setCurrentItem}) => (
   <table class="table">
     <thead>
       <tr>
@@ -25,7 +25,7 @@ const Table = ({items, attributes}) => (
       </tr>
     </tfoot>
     <tbody>
-      <Body items={items} attributes={attributes} />
+		 <Body items={items} attributes={attributes} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
     </tbody>
   </table>
 );

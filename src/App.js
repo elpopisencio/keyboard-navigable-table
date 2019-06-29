@@ -12,11 +12,19 @@ const HEADER = ['id', 'login'];
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     getUsers(setUsers);
   }, []);
   console.log(users);
-  return <Table items={users} attributes={HEADER} />;
+  return (
+    <Table
+      items={users}
+      attributes={HEADER}
+      currentItem={currentUser}
+      setCurrentItem={setCurrentUser}
+    />
+  );
 }
 
 export default App;
